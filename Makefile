@@ -3,18 +3,20 @@
 # Specify library locations here (add or remove "#" marks to comment/uncomment lines for your platform)
 
 # Mac OS X
-DDG_INCLUDE_PATH      =
-DDG_LIBRARY_PATH      =
-DDG_BLAS_LIBS         = -framework Accelerate
-DDG_SUITESPARSE_LIBS  = -lspqr -lumfpack -lcholmod -lmetis -lcolamd -lccolamd -lcamd -lamd -ltbb -lm -lsuitesparseconfig
-DDG_OPENGL_LIBS       = -framework OpenGL -framework GLUT
-
-# # Linux
 # DDG_INCLUDE_PATH      =
 # DDG_LIBRARY_PATH      =
-# DDG_BLAS_LIBS         = -llapack -lblas -lgfortran
+# DDG_BLAS_LIBS         = -framework Accelerate
+# DDG_SUITESPARSE_LIBS  = -lspqr -lumfpack -lcholmod -lmetis -lcolamd -lccolamd -lcamd -lamd -ltbb -lm -lsuitesparseconfig
+# DDG_OPENGL_LIBS       = -framework OpenGL -framework GLUT
+
+# # Linux
+DDG_INCLUDE_PATH      =
+DDG_LIBRARY_PATH      =
+DDG_BLAS_LIBS         = -llapack -lblas -lgfortran
 # DDG_SUITESPARSE_LIBS  = -lspqr -lcholmod -lmetis -lcolamd -lccolamd -lcamd -lamd -lm
 # DDG_OPENGL_LIBS       = -lglut -lGL -lGLU -lX11
+DDG_SUITESPARSE_LIBS  = -lspqr -lcholmod -lcolamd -lccolamd -lcamd -lamd -lm -lumfpack -lamd #-lmetis 
+DDG_OPENGL_LIBS       = -lGL -lGLU -lglut -lGLEW #-lX11
 
 # # Windows / Cygwin
 # DDG_INCLUDE_PATH      = -I/usr/include/opengl -I/usr/include/suitesparse
