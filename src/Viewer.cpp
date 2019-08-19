@@ -29,6 +29,9 @@ namespace DDG
    {
       restoreViewerState();
       initGLUT();
+      // glewInit() after getting the window
+      if (glewInit() != GLEW_OK)
+         throw std::runtime_error("glewInit failed");
       setGL();
       initGLSL();
       updateDisplayList();
