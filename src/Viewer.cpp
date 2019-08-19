@@ -35,7 +35,6 @@ namespace DDG
       initGLUT();
       std::cout << "   ------------------" << std::endl;
       std::cout << "   glewInit" << std::endl;
-      // glewInit() after getting the window
       if (glewInit() != GLEW_OK)
          throw std::runtime_error("glewInit failed");
       std::cout << "   ------------------" << std::endl;
