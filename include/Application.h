@@ -23,15 +23,22 @@ namespace DDG
    public:
       double run(double dt, Mesh& mesh)
       {
+         std::cout << "      ------------------" << std::endl;
+         std::cout << "      initial condition" << std::endl;
          // initial condiiton
          DenseMatrix<Real> u0;
          int nb = builImpulseSignal(mesh, u0);
          if( nb == 0 ) return 1.0;
          
+
+         std::cout << "      ------------------" << std::endl;
+         std::cout << "      Build Hodge * 0Form" << std::endl;
          // DEC
          SparseMatrix<Real> star0;
          HodgeStar0Form<Real>::build( mesh, star0 );
          
+         std::cout << "      ------------------" << std::endl;
+         std::cout << "      Build Hodge * 1Form" << std::endl;
          SparseMatrix<Real> star1;
          HodgeStar1Form<Real>::build( mesh, star1 );
          
