@@ -268,8 +268,10 @@ namespace DDG
    void Viewer :: mProcess( void )
    {
       Application app;
+      std::cout << "   ------------------" << std::endl;
+      std::cout << "   Solve for max geodesic distance" << std::endl;
       maxDistance = app.run(step, mesh);
-      std::cout << "MaxDist = " << maxDistance << std::endl;
+      std::cout << "   MaxDist = " << maxDistance << std::endl;
       updateDisplayList();
    }
    

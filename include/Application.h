@@ -41,7 +41,9 @@ namespace DDG
          std::cout << "      Build Hodge * 1Form" << std::endl;
          SparseMatrix<Real> star1;
          HodgeStar1Form<Real>::build( mesh, star1 );
-         
+
+         std::cout << "      ------------------" << std::endl;
+         std::cout << "      Build Exterior Derivative 0Form" << std::endl;
          SparseMatrix<Real> d0;
          ExteriorDerivative0Form<Real>::build( mesh, d0 );
          
