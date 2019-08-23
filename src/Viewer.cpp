@@ -19,8 +19,11 @@ namespace DDG
    int Viewer::windowSize[2] = { 512, 512 };
    Camera Viewer::camera;
    Shader Viewer::shader;
-   bool Viewer::renderWireframe = false;
-   bool Viewer::renderVectorField = false;
+   //bool Viewer::renderWireframe = false;
+   //bool Viewer::renderVectorField = false;
+   bool Viewer::renderWireframe = true;
+   bool Viewer::renderVectorField = true;
+   
    double Viewer::maxDistance = 1.0;
    double Viewer::step = 1.0;
    double Viewer::delta = 0.1;
@@ -433,6 +436,7 @@ namespace DDG
 
       glEnable( GL_POLYGON_OFFSET_FILL );
       glPolygonOffset( 1., 1. );
+      glColor3d( 1., .5, .25 );
       drawPolygons();
       glDisable( GL_POLYGON_OFFSET_FILL );
       
@@ -472,9 +476,11 @@ namespace DDG
                glNormal3dv( &N[0] );
             }
             
-            double alpha = he->vertex->distance / maxDistance;
-            glColor4f( alpha, alpha, alpha, 1. );
+            /*Code that makes the display visible */
             glVertex3dv( &he->vertex->position[0] );
+            // double alpha = he->vertex->distance / maxDistance;
+            // glColor4f( alpha, alpha, alpha, 1. );
+            // glVertex3dv( &he->vertex->position[0] );
             
             he = he->next;
          }
