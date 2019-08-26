@@ -211,6 +211,7 @@ namespace DDG
 
    void Viewer :: mouse( int button, int state, int x, int y )
    {
+      
       if( ( glutGetModifiers() & GLUT_ACTIVE_SHIFT) and state == GLUT_UP )
          pickVertex(x, y);
       else
@@ -620,6 +621,7 @@ namespace DDG
 
    void Viewer :: pickVertex(int x, int y)
    {
+      std::cout << "picking vertices" << std::endl;
       int width  = glutGet(GLUT_WINDOW_WIDTH );
       int height = glutGet(GLUT_WINDOW_HEIGHT);
       if( x < 0 || x >= width || y < 0 || y >= height ) return;

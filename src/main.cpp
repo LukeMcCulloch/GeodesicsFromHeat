@@ -14,6 +14,11 @@ int main( int argc, char** argv )
    }
 
    std::cout << "--------- ---------" << std::endl;
+   std::cout << "Notes:" << std::endl;
+   std::cout << "shift-click to select vertices" << std::endl;
+   std::cout << "space-bar to compute geodesics" << std::endl;
+
+   std::cout << "--------- ---------" << std::endl;
    std::cout << "Creating viewer" << std::endl;
    Viewer viewer;
 
