@@ -437,7 +437,7 @@ namespace DDG
 
       glEnable( GL_POLYGON_OFFSET_FILL );
       glPolygonOffset( 1., 1. );
-      glColor3d( 1., .5, .25 );
+      //glColor3d( 1., .5, .25 );
       drawPolygons();
       glDisable( GL_POLYGON_OFFSET_FILL );
       
@@ -478,10 +478,10 @@ namespace DDG
             }
             
             /*Code that makes the display visible */
+            //glVertex3dv( &he->vertex->position[0] );
+            double alpha = he->vertex->distance / maxDistance;
+            glColor4f( alpha, alpha, alpha, 1. );
             glVertex3dv( &he->vertex->position[0] );
-            // double alpha = he->vertex->distance / maxDistance;
-            // glColor4f( alpha, alpha, alpha, 1. );
-            // glVertex3dv( &he->vertex->position[0] );
             
             he = he->next;
          }
