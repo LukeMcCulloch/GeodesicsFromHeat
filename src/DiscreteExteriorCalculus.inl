@@ -2,6 +2,20 @@
 
 namespace DDG
 {
+
+
+/*
+
+      Build a sparse matrix encoding the Hodge operator on 0-forms for this mesh.
+      Returns a sparse, diagonal matrix corresponding to vertices.
+
+      The discrete hodge star is a diagonal matrix where each entry is
+      the (area of the dual element) / (area of the primal element). You will probably
+      want to make use of the Vertex.circumcentricDualArea property you just defined.
+
+      TLM as seen in notes:
+      By convention, the area of a vertex is 1.0.
+*/
    template <class T>
    void HodgeStar0Form<T> :: build( const Mesh& mesh,
                                     SparseMatrix<T>& star0 )
@@ -21,6 +35,26 @@ namespace DDG
       }
    }
 
+/*
+
+      Build a sparse matrix encoding the Hodge operator on 1-forms for this mesh.
+      Returns a sparse, diagonal matrix corresponding to edges.
+
+      The discrete hodge star is a diagonal matrix where each entry is
+      the (area of the dual element) / (area of the primal element). The solution
+      to exercise 26 from the previous homework will be useful here.
+
+      TLM: cotan formula again.  see ddg notes page 89
+      see also source slide 56:
+         http://brickisland.net/DDGFall2017/wp-content/uploads/2017/09/
+                              CMU_DDG_Fall2017_06_DiscreteExteriorCalculus.pdf
+
+      Note that for some geometries, some entries of hodge1 operator may be exactly 0.
+      This can create a problem when we go to invert the matrix. To numerically sidestep
+      this issue, you probably want to add a small value (like 10^-8) to these diagonal 
+      elements to ensure all are nonzero without significantly changing the result.
+
+*/
    template <class T>
    void HodgeStar1Form<T> :: build( const Mesh& mesh,
                                     SparseMatrix<T>& star1 )
@@ -44,6 +78,23 @@ namespace DDG
       }
    }
 
+   /*
+
+         Build a sparse matrix encoding the Hodge operator on 2-forms for this mesh
+         Returns a sparse, diagonal matrix corresponding to faces.
+
+         The discrete hodge star is a diagonal matrix where each entry is
+         the (area of the dual element) / (area of the primal element).
+
+
+         hint hint!, vertex is => (dual) vertex:
+         By convention, the area of a vertex is 1.0.
+
+
+         TLM: see also source slide 57:
+            http://brickisland.net/DDGFall2017/wp-content/uploads/2017/09/
+                              CMU_DDG_Fall2017_06_DiscreteExteriorCalculus.pdf
+   */
    template <class T>
    void HodgeStar2Form<T> :: build( const Mesh& mesh,
                                     SparseMatrix<T>& star2 )
@@ -63,6 +114,14 @@ namespace DDG
       }
    }
 
+   /*
+
+         Build a sparse matrix encoding the exterior derivative on 0-forms.
+
+         See section 3.6 of the course notes for an explanation of DEC.
+        
+         the exterior derivative of 0-form = [edge x vertex] adjacency matrix
+   */
    template< class T >
    void ExteriorDerivative0Form<T> :: build( const Mesh& mesh,
                                              SparseMatrix<T>& d0 )
@@ -90,6 +149,15 @@ namespace DDG
       }
    }
 
+
+   /*
+
+         Build a sparse matrix encoding the exterior derivative on 1-forms.
+
+         See section 3.6 of the course notes for an explanation of DEC.
+        
+         the exterior derivative of 1-form = [face x edge] adjacency matrix
+   */
    template< class T >
    void ExteriorDerivative1Form<T> :: build( const Mesh& mesh,
                                              SparseMatrix<T>& d1 )
